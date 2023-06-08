@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class MapScreen extends StatelessWidget
 {
   late double a, b;
- // late String name;
 
   MapScreen(this.a, this.b);
 
@@ -25,9 +24,6 @@ class MapScreen extends StatelessWidget
                 "123",
             ),
             position: LatLng(a, b),
-            // infoWindow: InfoWindow(
-            //   title: name,
-            // ),
           ),
         },
       ),

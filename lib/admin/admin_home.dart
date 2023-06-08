@@ -16,7 +16,7 @@ class AdminHome extends StatelessWidget
         elevation: 0.0,
         backgroundColor: HexColor("FFFFFF"),
         title: Text(
-          "Home",
+          "Admin Home",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -26,6 +26,7 @@ class AdminHome extends StatelessWidget
           IconButton(
             onPressed: ()
             {
+              CircularProgressIndicator();
               Navigator.push(
                 context, MaterialPageRoute(
                 builder: (context) => LoginScreen(),
@@ -42,6 +43,7 @@ class AdminHome extends StatelessWidget
         backgroundColor: Colors.black,
         onPressed: ()
         {
+          CircularProgressIndicator();
           Navigator.push(context, MaterialPageRoute(builder: (context) => AddEdit()));
         },
         child: Icon(Icons.add),
@@ -73,14 +75,7 @@ class AdminHome extends StatelessWidget
           } else
           {
             return Center(
-              child: Text(
-                "Waiting...",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                  color: Colors.black,
-                ),
-              ),
+              child: CircularProgressIndicator(),
             );
           }
         },

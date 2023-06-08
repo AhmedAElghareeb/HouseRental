@@ -109,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen>
                   );
                   data.setString("email", email.text.toString());
                   data.setString("password", password.text.toString());
+                  CircularProgressIndicator();
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => Home(),
                   ),);
@@ -143,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen>
                 color: Colors.black,
                 onPressed: ()
                 {
+                  CircularProgressIndicator();
                   Navigator.push(
                       context, MaterialPageRoute(
                       builder: (context) => SignUpScreen(),
@@ -172,6 +174,7 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
                 onPressed: ()
                 {
+                  CircularProgressIndicator();
                   Navigator.push(
                       context, MaterialPageRoute(
                       builder: (context) => AdminLogin()));

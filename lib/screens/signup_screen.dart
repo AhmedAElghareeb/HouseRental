@@ -130,6 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       email: email.text.trim(),
                       password: password.text.trim(),
                   );
+                  CircularProgressIndicator();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                 },
                 child: Text(
@@ -162,6 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 color: Colors.black,
                 onPressed: ()
                 {
+                  CircularProgressIndicator();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                 child: Text(

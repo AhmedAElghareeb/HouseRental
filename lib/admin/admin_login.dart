@@ -120,6 +120,7 @@ class _AdminLoginState extends State<AdminLogin>
                      data.setString("adminpassword", adminpassword.text.toString());
                      if (adminpassword.text == "admin1234")
                      {
+                       CircularProgressIndicator();
                        Navigator.push(
                            context, MaterialPageRoute(
                            builder: (context) => AdminHome()));

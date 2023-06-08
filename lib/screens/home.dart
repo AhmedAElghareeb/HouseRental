@@ -64,14 +64,7 @@ class Home extends StatelessWidget
           } else
           {
             return Center(
-              child: Text(
-                "Waiting...",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                  color: Colors.black,
-                ),
-              ),
+              child: CircularProgressIndicator(),
             );
           }
           },
