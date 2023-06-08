@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project/admin/admin_home.dart';
-import 'package:final_project/admin/item_info.dart';
 import 'package:final_project/hexacolor.dart';
-import 'package:final_project/main/main.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -24,8 +22,6 @@ class _AddNewState extends State<AddNew>
   TextEditingController call = new TextEditingController();
   TextEditingController lat=new TextEditingController();
   TextEditingController long=new TextEditingController();
-
-  late dynamic z;
 
   @override
   Widget build(BuildContext context) {

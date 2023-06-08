@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:final_project/admin/add_edit.dart';
+import 'package:final_project/admin/add_new.dart';
 import 'package:final_project/admin/one_item_info.dart';
 import 'package:final_project/hexacolor.dart';
 import 'package:final_project/screens/login_screen.dart';
@@ -44,7 +44,7 @@ class AdminHome extends StatelessWidget
         onPressed: ()
         {
           CircularProgressIndicator();
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AddEdit()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AddNew()));
         },
         child: Icon(Icons.add),
       ),
