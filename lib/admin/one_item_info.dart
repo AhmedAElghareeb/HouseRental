@@ -5,9 +5,9 @@ class OneItemInfo extends StatelessWidget
 {
   String des, pri, loc, facebook, sms, whatsapp, call;
   double lat,long;
-  dynamic img;
+  dynamic img1, img2, img3;
 
-  OneItemInfo(this.des, this.pri, this.loc, this.img, this.facebook, this.sms, this.whatsapp, this.call,this.lat,this.long);
+  OneItemInfo(this.des, this.pri, this.loc, this.img1, this.img2, this.img3,  this.facebook, this.sms, this.whatsapp, this.call,this.lat,this.long);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -20,7 +20,9 @@ class OneItemInfo extends StatelessWidget
               des,
               pri,
               loc,
-              img,
+              img1,
+              img2,
+              img3,
               facebook,
               sms,
               whatsapp,
@@ -34,10 +36,9 @@ class OneItemInfo extends StatelessWidget
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(img, width: 150, height: 150,),
-
+              Image.asset(img1, width: 150, height: 150,),
               SizedBox(width: 10.0,),
               Column(
                 children: [
@@ -48,7 +49,7 @@ class OneItemInfo extends StatelessWidget
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 30.0,),
+                  SizedBox(height: 10.0,),
                   Text(
                     "${pri} LE per month!!",
                     style: TextStyle(

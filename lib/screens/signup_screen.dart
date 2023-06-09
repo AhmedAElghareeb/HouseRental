@@ -131,7 +131,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       password: password.text.trim(),
                   );
                   CircularProgressIndicator();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home()), (route) => route.isCurrent
+                  );
                 },
                 child: Text(
                   "Sign Up",
@@ -164,7 +165,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onPressed: ()
                 {
                   CircularProgressIndicator();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => route.isCurrent
+                  );
                 },
                 child: Text(
                   "Login",

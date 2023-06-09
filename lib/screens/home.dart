@@ -25,10 +25,10 @@ class Home extends StatelessWidget
           IconButton(
             onPressed: ()
             {
-              Navigator.push(
+              Navigator.pushAndRemoveUntil(
                 context, MaterialPageRoute(
-                builder: (context) => LoginScreen(),
-              ),);
+                builder: (context) => LoginScreen()), (route) => route.isCurrent
+              );
             },
             icon: Icon(
               Icons.exit_to_app_rounded,
@@ -52,7 +52,9 @@ class Home extends StatelessWidget
                     snapshot.data.docs[index]["description"],
                     snapshot.data.docs[index]["price"],
                     snapshot.data.docs[index]["location"],
-                    snapshot.data.docs[index]["photo"],
+                    snapshot.data.docs[index]["photo1"],
+                    snapshot.data.docs[index]["photo2"],
+                    snapshot.data.docs[index]["photo3"],
                     snapshot.data.docs[index]["facebook"],
                     snapshot.data.docs[index]["sms"],
                     snapshot.data.docs[index]["whatsapp"],

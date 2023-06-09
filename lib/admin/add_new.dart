@@ -15,7 +15,9 @@ class _AddNewState extends State<AddNew>
   TextEditingController des = new TextEditingController();
   TextEditingController pri = new TextEditingController();
   TextEditingController loc = new TextEditingController();
-  TextEditingController pic = new TextEditingController();
+  TextEditingController pic1 = new TextEditingController();
+  TextEditingController pic2 = new TextEditingController();
+  TextEditingController pic3 = new TextEditingController();
   TextEditingController facebook = new TextEditingController();
   TextEditingController sms = new TextEditingController();
   TextEditingController whatsapp = new TextEditingController();
@@ -128,10 +130,54 @@ class _AddNewState extends State<AddNew>
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: TextField(
-              controller: pic,
+              controller: pic1,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                hintText: "Picture",
+                hintText: "Picture 1",
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey)),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey)),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: TextField(
+              controller: pic2,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                hintText: "Picture 2",
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey)),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey)),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              controller: pic3,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                hintText: "Picture 3",
                 filled: true,
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
@@ -261,7 +307,9 @@ class _AddNewState extends State<AddNew>
                     String description = des.text;
                     String price  = pri.text;
                     String location = loc.text;
-                    String photo = pic.text;
+                    String photo1 = pic1.text;
+                    String photo2 = pic2.text;
+                    String photo3 = pic3.text;
                     String face = facebook.text;
                     String sm = sms.text;
                     String whats = whatsapp.text;
@@ -273,7 +321,9 @@ class _AddNewState extends State<AddNew>
                           "description" : description,
                           "price" : price,
                           "location" : location,
-                          "photo" : photo,
+                          "photo1" : photo1,
+                          "photo2" : photo2,
+                          "photo3" : photo3,
                           "facebook" : face,
                           "sms" : sm,
                           "whatsapp" : whats,

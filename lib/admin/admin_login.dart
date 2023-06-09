@@ -48,7 +48,7 @@ class _AdminLoginState extends State<AdminLogin>
                   ],
                 ),
               ),
-              SizedBox(height: 50.0,),
+              SizedBox(height: 30.0,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
@@ -121,9 +121,10 @@ class _AdminLoginState extends State<AdminLogin>
                      if (adminpassword.text == "admin1234")
                      {
                        CircularProgressIndicator();
-                       Navigator.push(
+                       Navigator.pushAndRemoveUntil(
                            context, MaterialPageRoute(
-                           builder: (context) => AdminHome()));
+                           builder: (context) => AdminHome()), (route) => route.isCurrent
+                       );
                      }
                      },
                 child: Text(

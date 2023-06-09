@@ -110,9 +110,9 @@ class _LoginScreenState extends State<LoginScreen>
                   data.setString("email", email.text.toString());
                   data.setString("password", password.text.toString());
                   CircularProgressIndicator();
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => Home(),
-                  ),);
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                      builder: (context) => Home()), (route) => route.isCurrent
+                  );
                 },
                 child: Text(
                   "Login",
@@ -145,10 +145,10 @@ class _LoginScreenState extends State<LoginScreen>
                 onPressed: ()
                 {
                   CircularProgressIndicator();
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                       context, MaterialPageRoute(
-                      builder: (context) => SignUpScreen(),
-                  ),);
+                      builder: (context) => SignUpScreen()), (route) => route.isFirst
+                  );
                 },
                 child: Text(
                   "Sign Up",
@@ -175,9 +175,10 @@ class _LoginScreenState extends State<LoginScreen>
                 onPressed: ()
                 {
                   CircularProgressIndicator();
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                       context, MaterialPageRoute(
-                      builder: (context) => AdminLogin()));
+                      builder: (context) => AdminLogin()), (route) => route.isCurrent
+                  );
                 },
                 child: Row(
                   children: [

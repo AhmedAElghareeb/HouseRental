@@ -9,9 +9,22 @@ class ItemInfo extends StatefulWidget
 {
   late String des, pri, loc, facebook, sms, whatsapp, call;
   late double lat,long;
-  dynamic img;
+  dynamic img1, img2, img3;
 
-  ItemInfo(this.des, this.pri, this.loc, this.img, this.facebook, this.sms, this.whatsapp, this.call,this.lat,this.long);
+  ItemInfo(
+      this.des,
+      this.pri,
+      this.loc,
+      this.img1,
+      this.img2,
+      this.img3,
+      this.facebook,
+      this.sms,
+      this.whatsapp,
+      this.call,
+      this.lat,
+      this.long,
+      );
 
   @override
   State<ItemInfo> createState() => _ItemInfoState();
@@ -44,27 +57,34 @@ class _ItemInfoState extends State<ItemInfo>
         ),
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Image.asset(widget.img, width: 200,),
+          Container(
+            height: 250,
+            child: ListView(
+              padding: EdgeInsets.all(10.0),
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              children: [
+                Image.asset(widget.img1, width: 300, height: 200,),
+                Image.asset(widget.img2, width: 300, height: 200,),
+                Image.asset(widget.img3, width: 300, height: 200,),
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(15.0),
             child: Text("Description: ${widget.des}", style: TextStyle(fontWeight: FontWeight.bold),),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: Text("Location: ${widget.loc}", style: TextStyle(fontWeight: FontWeight.bold),),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(15.0),
             child: Text("Price: ${widget.pri} LE Per Month", style: TextStyle(fontWeight: FontWeight.bold),),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
