@@ -1,19 +1,19 @@
-import 'package:final_project/hexacolor.dart';
-import 'package:final_project/screens/home.dart';
-import 'package:final_project/screens/login_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:final_project/admin/admin_login.dart';
+import 'package:final_project/widgets/hexacolor.dart';
+import 'package:final_project/main/main.dart';
+import 'package:final_project/user_screens/home.dart';
+import 'package:final_project/user_screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-
-class SignUpScreen extends StatefulWidget
+class LoginScreen extends StatefulWidget
 {
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController name = new TextEditingController();
-
+class _LoginScreenState extends State<LoginScreen>
+{
   TextEditingController email = new TextEditingController();
 
   TextEditingController password = new TextEditingController();
@@ -33,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Sign Up",
+                "Login",
                 style: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
@@ -43,29 +43,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ],
           ),
           SizedBox(height: 25.0,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: name,
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                hintText: "Enter Your Name",
-                filled: true,
-                fillColor: Colors.white,
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 15.0,),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -126,16 +103,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 color: Colors.black,
                 onPressed: ()
                 async {
-                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
                       email: email.text.trim(),
                       password: password.text.trim(),
                   );
+                  data.setString("email", email.text.toString());
+                  data.setString("password", password.text.toString());
                   CircularProgressIndicator();
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home()), (route) => route.isCurrent
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                      builder: (context) => Home()), (route) => route.isCurrent
                   );
                 },
                 child: Text(
-                  "Sign Up",
+                  "Login",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -149,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Have an Account?",
+                "Don't Have an Account?",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 12.0,
@@ -165,15 +145,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onPressed: ()
                 {
                   CircularProgressIndicator();
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => route.isCurrent
+                  Navigator.pushAndRemoveUntil(
+                      context, MaterialPageRoute(
+                      builder: (context) => SignUpScreen()), (route) => route.isFirst
                   );
                 },
                 child: Text(
-                  "Login",
+                  "Sign Up",
                   style: TextStyle(
-                    fontSize: 15.0,
+                    fontSize: 14.0,
                     color: Colors.white,
                   ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 45.0,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MaterialButton(
+                color: Colors.black,
+                elevation: 0.0,
+                height: 40,
+                minWidth: 180,
+                shape: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(1000.0),
+                ),
+                onPressed: ()
+                {
+                  CircularProgressIndicator();
+                  Navigator.pushAndRemoveUntil(
+                      context, MaterialPageRoute(
+                      builder: (context) => AdminLogin()), (route) => route.isCurrent
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.person_pin_sharp,
+                      size: 20.0,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 10.0,),
+                    Text(
+                      "Login As Admin?",
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

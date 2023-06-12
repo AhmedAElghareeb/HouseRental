@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:final_project/admin/add_new.dart';
 import 'package:final_project/admin/one_item_info.dart';
 import 'package:final_project/widgets/hexacolor.dart';
+import 'package:final_project/user_screens/favorites.dart';
 import 'package:final_project/user_screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class AdminHome extends StatelessWidget
+class Home extends StatelessWidget
 {
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class AdminHome extends StatelessWidget
         elevation: 0.0,
         backgroundColor: HexColor("FFFFFF"),
         title: Text(
-          "Admin Home",
+          "Home",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -26,10 +26,9 @@ class AdminHome extends StatelessWidget
           IconButton(
             onPressed: ()
             {
-              CircularProgressIndicator();
               Navigator.pushAndRemoveUntil(
                 context, MaterialPageRoute(
-                builder: (context) => LoginScreen()), (route) => route.isCurrent
+                  builder: (context) => LoginScreen()), (route) => route.isCurrent
               );
             },
             icon: Icon(
@@ -37,17 +36,20 @@ class AdminHome extends StatelessWidget
               color: Colors.black,
             ),
           ),
+          IconButton(
+            onPressed: ()
+            {
+              Navigator.pushAndRemoveUntil(
+                context, MaterialPageRoute(
+                  builder: (context) => Favorites()), (route) => route.isFirst,
+              );
+            },
+            icon: Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
+          ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: ()
-        {
-          CircularProgressIndicator();
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => AddNew()), (route) => route.isFirst
-          );
-        },
-        child: Icon(Icons.add),
       ),
       body: FutureBuilder(
         future: FirebaseFirestore.instance.collection("Items").get(),
@@ -77,17 +79,6 @@ class AdminHome extends StatelessWidget
                         snapshot.data.docs[index]["lat"],
                         snapshot.data.docs[index]["long"],
                       ),
-                      IconButton(
-                        onPressed: () async {
-                          await deleteItem(snapshot.data.docs[index].id);
-                          Navigator.pushAndRemoveUntil(
-                              context, MaterialPageRoute(builder: (context) => AdminHome()), (route) => route.isCurrent);
-                        },
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        ),
-                      ),
                     ],
                   );
                 });
@@ -97,17 +88,8 @@ class AdminHome extends StatelessWidget
               child: CircularProgressIndicator(),
             );
           }
-        },
+          },
       ),
     );
-  }
-
-  Future<void> deleteItem(id)
-  async {
-    FirebaseFirestore
-        .instance
-        .collection("Items")
-        .doc(id)
-        .delete();
   }
 }

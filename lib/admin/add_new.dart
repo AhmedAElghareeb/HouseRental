@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project/admin/admin_home.dart';
-import 'package:final_project/hexacolor.dart';
+import 'package:final_project/widgets/hexacolor.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -298,11 +298,11 @@ class _AddNewState extends State<AddNew>
                   onPressed: ()
                   {
                     setState(() async {
+
                       Location _location =new Location();
                       dynamic _direction=await _location.getLocation();
                       double _latt=_direction.latitude;
                       double _longg=_direction.longitude;
-
 
                     String description = des.text;
                     String price  = pri.text;
@@ -314,7 +314,6 @@ class _AddNewState extends State<AddNew>
                     String sm = sms.text;
                     String whats = whatsapp.text;
                     String cal = call.text;
-
 
                     FirebaseFirestore.instance.collection("Items").add(
                         <String, dynamic> {
@@ -332,9 +331,10 @@ class _AddNewState extends State<AddNew>
                           "long":_longg,
                         }
                     );
-                    Navigator.push(
+
+                    Navigator.pushAndRemoveUntil(
                         context, MaterialPageRoute(
-                        builder: (context) => AdminHome()));
+                        builder: (context) => AdminHome()), (route) => route.isCurrent);
                     });
                   },
                   child: Text(

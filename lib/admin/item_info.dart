@@ -1,4 +1,4 @@
-import 'package:final_project/hexacolor.dart';
+import 'package:final_project/widgets/hexacolor.dart';
 import 'package:final_project/map/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -112,7 +112,7 @@ class _ItemInfoState extends State<ItemInfo>
                 {
                   Navigator.push(
                       context, MaterialPageRoute(
-                      builder: (context) => MapScreen(widget.lat,widget.long),),);
+                      builder: (context) => MapScreen(double.parse(widget.lat.toString()),double.parse(widget.long.toString())),),);
                 }, icon: Icon(Icons.my_location)),
               ],
             ),

@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class MapScreen extends StatelessWidget
 {
   late double a, b;
-
   MapScreen(this.a, this.b);
 
   @override
