@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
         splash: Center(
-            child: Image.asset("assets/logoo.jpeg"),
+            child: Image.asset("assets/app_logo/logoo.jpeg"),
           ),
         nextScreen: (data.getString("email") == null) ? LoginScreen() : Home(),
         splashTransition: SplashTransition.scaleTransition,

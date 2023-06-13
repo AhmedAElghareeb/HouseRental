@@ -44,7 +44,7 @@ class _AdminLoginState extends State<AdminLogin>
                       ),
                     ),
                     SizedBox(height: 20,),
-                    Image.asset("assets/hi.png", width: 150, height: 150,),
+                    Image.asset("assets/app_logo/hi.png", width: 150, height: 150,),
                   ],
                 ),
               ),

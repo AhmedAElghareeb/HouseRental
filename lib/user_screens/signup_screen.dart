@@ -27,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          Image.asset("assets/logoo.jpeg", width: 200, height: 200,),
+          Image.asset("assets/app_logo/logoo.jpeg", width: 200, height: 200,),
           SizedBox(height: 25.0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

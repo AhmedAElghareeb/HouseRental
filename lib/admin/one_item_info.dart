@@ -70,7 +70,7 @@ class _OneItemInfoState extends State<OneItemInfo> {
                   FittedBox(
                     fit: BoxFit.contain,
                     child: Text(
-                      "${widget.pri} LE per month!!",
+                      "${widget.pri} EGP per month!!",
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.bold,

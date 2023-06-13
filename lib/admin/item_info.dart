@@ -81,7 +81,7 @@ class _ItemInfoState extends State<ItemInfo>
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("Price: ${widget.pri} LE Per Month", style: TextStyle(fontWeight: FontWeight.bold),),
+            child: Text("Price: ${widget.pri} EGP Per Month", style: TextStyle(fontWeight: FontWeight.bold),),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),

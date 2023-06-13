@@ -51,7 +51,7 @@ class _AddNewState extends State<AddNew>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "To Add New Photo (assets/name of photo.extention!!!)",
+                  "To Add New Photo (assets/data/name of photo.extention)",
                   style: TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold,
