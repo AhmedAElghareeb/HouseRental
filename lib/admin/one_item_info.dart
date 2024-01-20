@@ -1,6 +1,4 @@
 import 'package:final_project/admin/item_info.dart';
-import 'package:final_project/main.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
 
 class OneItemInfo extends StatefulWidget
@@ -16,11 +14,6 @@ class OneItemInfo extends StatefulWidget
 }
 
 class _OneItemInfoState extends State<OneItemInfo> {
-  bool _istap = false;
-  dynamic _icon = Icon(
-    Icons.favorite_outline,
-  );
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -76,28 +69,6 @@ class _OneItemInfoState extends State<OneItemInfo> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10.0,),
-                  IconButton(
-                    icon: (_istap == true) ? _icon = Icon(Icons.favorite) : _icon,
-                    onPressed: ()
-                    {
-                      mydb.insert(
-                          "Items", {
-                          "description": widget.des.toString(),
-                          "price": widget.pri.toString(),
-                          "location": widget.loc.toString(),
-                          "photo1": widget.img1.toString(),
-                          "photo2": widget.img2.toString(),
-                          "photo3": widget.img3.toString(),
-                          "facebook": widget.facebook.toString(),
-                          "sms": widget.sms.toString(),
-                          "whatsapp": widget.whatsapp.toString(),
-                          "call": widget.call.toString(),
-                          "lat": double.parse(widget.lat.toString()),
-                          "long": double.parse(widget.long.toString()),
-                        }, conflictAlgorithm: ConflictAlgorithm.ignore,);
-                    },
                   ),
                 ],
               ),

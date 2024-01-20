@@ -63,6 +63,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
           ),
           SizedBox(height: 15.0,),
@@ -86,6 +89,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
           ),
           SizedBox(height: 15.0,),
@@ -110,6 +116,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
           ),
           SizedBox(height: 35.0,),

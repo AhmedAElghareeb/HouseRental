@@ -4,17 +4,16 @@ import 'package:final_project/main.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+class AdminLogin extends StatefulWidget {
+  const AdminLogin({super.key});
 
-class AdminLogin extends StatefulWidget
-{
   @override
   State<AdminLogin> createState() => _AdminLoginState();
 }
 
-class _AdminLoginState extends State<AdminLogin>
-{
-  TextEditingController adminemail = new TextEditingController();
-  TextEditingController adminpassword = new TextEditingController();
+class _AdminLoginState extends State<AdminLogin> {
+  TextEditingController adminEmail = TextEditingController();
+  TextEditingController adminPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +21,9 @@ class _AdminLoginState extends State<AdminLogin>
     return Scaffold(
       backgroundColor: HexColor("FFFFFF"),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
-        children:
-        [
+        children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -33,7 +31,7 @@ class _AdminLoginState extends State<AdminLogin>
                 padding: const EdgeInsets.all(50.0),
                 child: Column(
                   children: [
-                    Center(
+                    const Center(
                       child: Text(
                         "Hello Admin",
                         style: TextStyle(
@@ -43,16 +41,24 @@ class _AdminLoginState extends State<AdminLogin>
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
-                    Image.asset("assets/app_logo/hi.png", width: 150, height: 150,),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Image.asset(
+                      "assets/app_logo/hi.png",
+                      width: 150,
+                      height: 150,
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 30.0,),
+              const SizedBox(
+                height: 30.0,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  controller: adminemail,
+                  controller: adminEmail,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     hintText: "Enter Your E-Mail",
@@ -60,26 +66,30 @@ class _AdminLoginState extends State<AdminLogin>
                     fillColor: Colors.white,
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.grey)),
+                        borderSide: const BorderSide(color: Colors.grey)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.grey)),
+                        borderSide: const BorderSide(color: Colors.grey)),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
+                      borderSide: const BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
+                  onTapOutside: (event) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
                 ),
               ),
-              SizedBox(height: 15.0,),
+              const SizedBox(
+                height: 15.0,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  onChanged: (value)
-                  {
-                    value = adminpassword.text;
+                  onChanged: (value) {
+                    value = adminPassword.text;
                   },
-                  controller: adminpassword,
+                  controller: adminPassword,
                   cursorColor: Colors.black,
                   obscureText: true,
                   decoration: InputDecoration(
@@ -88,20 +98,25 @@ class _AdminLoginState extends State<AdminLogin>
                     fillColor: Colors.white,
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.grey)),
+                        borderSide: const BorderSide(color: Colors.grey)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.grey)),
+                        borderSide: const BorderSide(color: Colors.grey)),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
+                      borderSide: const BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
+                  onTapOutside: (event) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
                 ),
               ),
-              SizedBox(height: 15.0,),
+              const SizedBox(
+                height: 15.0,
+              ),
               MaterialButton(
-                shape: OutlineInputBorder(
+                shape: const OutlineInputBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(1000.0),
                     bottomRight: Radius.circular(1000.0),
@@ -112,22 +127,22 @@ class _AdminLoginState extends State<AdminLogin>
                 minWidth: 150,
                 color: Colors.black,
                 onPressed: () async {
-                     await FirebaseAuth.instance.signInWithEmailAndPassword(
-                       email: adminemail.text.trim(),
-                       password: adminpassword.text.trim(),
-                     );
-                     data.setString("adminemail", adminemail.text.toString());
-                     data.setString("adminpassword", adminpassword.text.toString());
-                     if (adminpassword.text == "admin1234")
-                     {
-                       CircularProgressIndicator();
-                       Navigator.pushAndRemoveUntil(
-                           context, MaterialPageRoute(
-                           builder: (context) => AdminHome()), (route) => route.isCurrent
-                       );
-                     }
-                     },
-                child: Text(
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: adminEmail.text.trim(),
+                    password: adminPassword.text.trim(),
+                  );
+                  data.setString("adminemail", adminEmail.text.toString());
+                  data.setString(
+                      "adminpassword", adminPassword.text.toString());
+                  if (adminPassword.text == "admin1234") {
+                    const CircularProgressIndicator();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => AdminHome()),
+                        (route) => route.isCurrent);
+                  }
+                },
+                child: const Text(
                   "Login",
                   style: TextStyle(
                     fontSize: 18.0,

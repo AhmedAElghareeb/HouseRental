@@ -15,7 +15,7 @@ class AdminHome extends StatelessWidget
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: HexColor("FFFFFF"),
-        title: Text(
+        title: const Text(
           "Admin Home",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -26,13 +26,13 @@ class AdminHome extends StatelessWidget
           IconButton(
             onPressed: ()
             {
-              CircularProgressIndicator();
+              const CircularProgressIndicator();
               Navigator.pushAndRemoveUntil(
                 context, MaterialPageRoute(
                 builder: (context) => LoginScreen()), (route) => route.isCurrent
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.exit_to_app_rounded,
               color: Colors.black,
             ),
@@ -43,11 +43,11 @@ class AdminHome extends StatelessWidget
         backgroundColor: Colors.black,
         onPressed: ()
         {
-          CircularProgressIndicator();
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => AddNew()), (route) => route.isFirst
+          const CircularProgressIndicator();
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const AddNew()), (route) => route.isFirst
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.white,),
       ),
       body: FutureBuilder(
         future: FirebaseFirestore.instance.collection("Items").get(),
@@ -56,7 +56,7 @@ class AdminHome extends StatelessWidget
           if (snapshot.hasData == true)
           {
             return ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: snapshot.data.docs.length,
                 itemBuilder: (context, index)
                 {
@@ -83,7 +83,7 @@ class AdminHome extends StatelessWidget
                           Navigator.pushAndRemoveUntil(
                               context, MaterialPageRoute(builder: (context) => AdminHome()), (route) => route.isCurrent);
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.delete,
                           color: Colors.red,
                         ),
@@ -93,7 +93,7 @@ class AdminHome extends StatelessWidget
                 });
           } else
           {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

@@ -4,26 +4,26 @@ import 'package:final_project/widgets/hexacolor.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
-class AddNew extends StatefulWidget
-{
+class AddNew extends StatefulWidget {
+  const AddNew({super.key});
+
   @override
   State<AddNew> createState() => _AddNewState();
 }
 
-class _AddNewState extends State<AddNew>
-{
-  TextEditingController des = new TextEditingController();
-  TextEditingController pri = new TextEditingController();
-  TextEditingController loc = new TextEditingController();
-  TextEditingController pic1 = new TextEditingController();
-  TextEditingController pic2 = new TextEditingController();
-  TextEditingController pic3 = new TextEditingController();
-  TextEditingController facebook = new TextEditingController();
-  TextEditingController sms = new TextEditingController();
-  TextEditingController whatsapp = new TextEditingController();
-  TextEditingController call = new TextEditingController();
-  TextEditingController lat=new TextEditingController();
-  TextEditingController long=new TextEditingController();
+class _AddNewState extends State<AddNew> {
+  TextEditingController des = TextEditingController();
+  TextEditingController pri = TextEditingController();
+  TextEditingController loc = TextEditingController();
+  TextEditingController pic1 = TextEditingController();
+  TextEditingController pic2 = TextEditingController();
+  TextEditingController pic3 = TextEditingController();
+  TextEditingController facebook = TextEditingController();
+  TextEditingController sms = TextEditingController();
+  TextEditingController whatsapp = TextEditingController();
+  TextEditingController call = TextEditingController();
+  TextEditingController lat = TextEditingController();
+  TextEditingController long = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +31,23 @@ class _AddNewState extends State<AddNew>
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: ()
-          {
+          onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back, color: Colors.black,),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
         elevation: 0.0,
         backgroundColor: HexColor("FFFFFF"),
       ),
       backgroundColor: HexColor("FFFFFF"),
       body: ListView(
-        physics:  BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -72,12 +74,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -94,12 +96,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -116,12 +118,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -138,12 +140,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -160,12 +162,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -182,12 +184,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -204,12 +206,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -226,12 +228,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -248,12 +250,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -270,12 +272,12 @@ class _AddNewState extends State<AddNew>
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
@@ -287,7 +289,7 @@ class _AddNewState extends State<AddNew>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MaterialButton(
-                  shape: OutlineInputBorder(
+                  shape: const OutlineInputBorder(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(1000.0),
                       bottomLeft: Radius.circular(1000.0),
@@ -295,49 +297,48 @@ class _AddNewState extends State<AddNew>
                   ),
                   elevation: 0.0,
                   color: Colors.black,
-                  onPressed: ()
-                  {
+                  onPressed: () {
                     setState(() async {
+                      Location _location = Location();
+                      dynamic _direction = await _location.getLocation();
+                      double _latt = _direction.latitude;
+                      double _longg = _direction.longitude;
 
-                      Location _location =new Location();
-                      dynamic _direction=await _location.getLocation();
-                      double _latt=_direction.latitude;
-                      double _longg=_direction.longitude;
+                      String description = des.text;
+                      String price = pri.text;
+                      String location = loc.text;
+                      String photo1 = pic1.text;
+                      String photo2 = pic2.text;
+                      String photo3 = pic3.text;
+                      String face = facebook.text;
+                      String sm = sms.text;
+                      String whats = whatsapp.text;
+                      String cal = call.text;
 
-                    String description = des.text;
-                    String price  = pri.text;
-                    String location = loc.text;
-                    String photo1 = pic1.text;
-                    String photo2 = pic2.text;
-                    String photo3 = pic3.text;
-                    String face = facebook.text;
-                    String sm = sms.text;
-                    String whats = whatsapp.text;
-                    String cal = call.text;
+                      FirebaseFirestore.instance
+                          .collection("Items")
+                          .add(<String, dynamic>{
+                        "description": description,
+                        "price": price,
+                        "location": location,
+                        "photo1": photo1,
+                        "photo2": photo2,
+                        "photo3": photo3,
+                        "facebook": face,
+                        "sms": sm,
+                        "whatsapp": whats,
+                        "call": cal,
+                        "lat": _latt,
+                        "long": _longg,
+                      });
 
-                    FirebaseFirestore.instance.collection("Items").add(
-                        <String, dynamic> {
-                          "description" : description,
-                          "price" : price,
-                          "location" : location,
-                          "photo1" : photo1,
-                          "photo2" : photo2,
-                          "photo3" : photo3,
-                          "facebook" : face,
-                          "sms" : sm,
-                          "whatsapp" : whats,
-                          "call" : cal,
-                          "lat":_latt,
-                          "long":_longg,
-                        }
-                    );
-
-                    Navigator.pushAndRemoveUntil(
-                        context, MaterialPageRoute(
-                        builder: (context) => AdminHome()), (route) => route.isCurrent);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => AdminHome()),
+                          (route) => route.isCurrent);
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     "Save",
                     style: TextStyle(
                       color: Colors.white,

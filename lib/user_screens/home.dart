@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project/admin/one_item_info.dart';
 import 'package:final_project/widgets/hexacolor.dart';
-import 'package:final_project/user_screens/favorites.dart';
 import 'package:final_project/user_screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget
 {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -15,7 +16,7 @@ class Home extends StatelessWidget
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: HexColor("FFFFFF"),
-        title: Text(
+        title: const Text(
           "Home",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -31,22 +32,9 @@ class Home extends StatelessWidget
                   builder: (context) => LoginScreen()), (route) => route.isCurrent
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.exit_to_app_rounded,
               color: Colors.black,
-            ),
-          ),
-          IconButton(
-            onPressed: ()
-            {
-              Navigator.pushAndRemoveUntil(
-                context, MaterialPageRoute(
-                  builder: (context) => Favorites()), (route) => route.isFirst,
-              );
-            },
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.red,
             ),
           ),
         ],
@@ -58,7 +46,7 @@ class Home extends StatelessWidget
           if (snapshot.hasData == true)
           {
             return ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: snapshot.data.docs.length,
                 itemBuilder: (context, index)
                 {
@@ -84,7 +72,7 @@ class Home extends StatelessWidget
                 });
           } else
           {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

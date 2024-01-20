@@ -63,6 +63,9 @@ class _LoginScreenState extends State<LoginScreen>
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
           ),
           SizedBox(height: 15.0,),
@@ -87,6 +90,9 @@ class _LoginScreenState extends State<LoginScreen>
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
           ),
           SizedBox(height: 35.0,),
