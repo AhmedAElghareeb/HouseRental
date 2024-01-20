@@ -1,6 +1,6 @@
 import 'package:final_project/admin/admin_home.dart';
 import 'package:final_project/widgets/hexacolor.dart';
-import 'package:final_project/main/main.dart';
+import 'package:final_project/main.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

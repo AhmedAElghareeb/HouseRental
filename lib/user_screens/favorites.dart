@@ -1,6 +1,6 @@
 import 'package:final_project/admin/one_item_info.dart';
 import 'package:final_project/widgets/hexacolor.dart';
-import 'package:final_project/main/main.dart';
+import 'package:final_project/main.dart';
 import 'package:flutter/material.dart';
 
 class Favorites extends StatelessWidget

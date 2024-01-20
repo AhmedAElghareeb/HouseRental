@@ -1,5 +1,5 @@
 import 'package:final_project/admin/item_info.dart';
-import 'package:final_project/main/main.dart';
+import 'package:final_project/main.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
 

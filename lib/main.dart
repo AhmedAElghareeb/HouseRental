@@ -28,5 +28,5 @@ async {
 
   data = await SharedPreferences.getInstance();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }

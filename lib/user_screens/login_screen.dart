@@ -1,6 +1,6 @@
 import 'package:final_project/admin/admin_login.dart';
 import 'package:final_project/widgets/hexacolor.dart';
-import 'package:final_project/main/main.dart';
+import 'package:final_project/main.dart';
 import 'package:final_project/user_screens/home.dart';
 import 'package:final_project/user_screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
