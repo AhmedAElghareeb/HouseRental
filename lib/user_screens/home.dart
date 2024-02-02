@@ -10,7 +10,6 @@ class Home extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: HexColor("FFFFFF"),
       appBar: AppBar(
@@ -57,15 +56,13 @@ class Home extends StatelessWidget
                         snapshot.data.docs[index]["description"],
                         snapshot.data.docs[index]["price"],
                         snapshot.data.docs[index]["location"],
-                        snapshot.data.docs[index]["photo1"],
-                        snapshot.data.docs[index]["photo2"],
-                        snapshot.data.docs[index]["photo3"],
                         snapshot.data.docs[index]["facebook"],
                         snapshot.data.docs[index]["sms"],
                         snapshot.data.docs[index]["whatsapp"],
                         snapshot.data.docs[index]["call"],
                         snapshot.data.docs[index]["lat"],
                         snapshot.data.docs[index]["long"],
+                        snapshot.data.docs[index]["imageUrl"],
                       ),
                     ],
                   );

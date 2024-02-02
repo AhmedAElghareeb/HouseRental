@@ -4,34 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-
-class ItemInfo extends StatefulWidget
-{
+class ItemInfo extends StatefulWidget {
   late String des, pri, loc, facebook, sms, whatsapp, call;
-  late double lat,long;
-  dynamic img1, img2, img3;
+  late String lat, long;
+  String imageUrl = "";
 
   ItemInfo(
-      this.des,
-      this.pri,
-      this.loc,
-      this.img1,
-      this.img2,
-      this.img3,
-      this.facebook,
-      this.sms,
-      this.whatsapp,
-      this.call,
-      this.lat,
-      this.long,
-      );
+    this.des,
+    this.pri,
+    this.loc,
+    this.facebook,
+    this.sms,
+    this.whatsapp,
+    this.call,
+    this.lat,
+    this.long,
+    this.imageUrl,
+  );
 
   @override
   State<ItemInfo> createState() => _ItemInfoState();
 }
 
-class _ItemInfoState extends State<ItemInfo>
-{
+class _ItemInfoState extends State<ItemInfo> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -39,15 +34,17 @@ class _ItemInfoState extends State<ItemInfo>
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: ()
-          {
+          onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back, color: Colors.black,),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
         elevation: 0.0,
         backgroundColor: HexColor("FFFFFF"),
-        title: Text(
+        title: const Text(
           "Appartment Information",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -58,62 +55,92 @@ class _ItemInfoState extends State<ItemInfo>
       ),
       body: ListView(
         children: [
-          Container(
+          SizedBox(
             height: 250,
             child: ListView(
-              padding: EdgeInsets.all(10.0),
-              physics: BouncingScrollPhysics(),
+              padding: const EdgeInsets.all(10.0),
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               children: [
-                Image.asset(widget.img1, width: 300, height: 200,),
-                Image.asset(widget.img2, width: 300, height: 200,),
-                Image.asset(widget.img3, width: 300, height: 200,),
+                SizedBox(
+                    width: 300,
+                    height: 200,
+                    child: Image.network(widget.imageUrl.toString())),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("Description: ${widget.des}", style: TextStyle(fontWeight: FontWeight.bold),),
+            child: Text(
+              "Description: ${widget.des}",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-            child: Text("Location: ${widget.loc}", style: TextStyle(fontWeight: FontWeight.bold),),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+            child: Text(
+              "Location: ${widget.loc}",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("Price: ${widget.pri} EGP Per Month", style: TextStyle(fontWeight: FontWeight.bold),),
+            child: Text(
+              "Price: ${widget.pri} EGP Per Month",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: ()
-                {
-                  launch("https://www.facebook.com/${widget.facebook}/");
-                }, icon: Icon(Icons.facebook)),
-                SizedBox(width: 20.0,),
-                IconButton(onPressed: ()
-                {
-                  launch("sms: +2${widget.sms}");
-                }, icon: Icon(Icons.message)),
-                SizedBox(width: 20.0,),
-                IconButton(onPressed: ()
-                {
-                  launch("https://wa.me/+2${widget.whatsapp}/");
-                }, icon: Icon(Icons.telegram_rounded)),
-                SizedBox(width: 20.0,),
-                IconButton(onPressed: ()
-                {
-                  FlutterPhoneDirectCaller.callNumber("+2${widget.call}");
-                }, icon: Icon(Icons.call)),
-                SizedBox(width: 20.0,),
-                IconButton(onPressed: ()
-                {
-                  Navigator.push(
-                      context, MaterialPageRoute(
-                      builder: (context) => MapScreen(double.parse(widget.lat.toString()),double.parse(widget.long.toString())),),);
-                }, icon: Icon(Icons.my_location)),
+                IconButton(
+                    onPressed: () {
+                      launch("https://www.facebook.com/${widget.facebook}/");
+                    },
+                    icon: const Icon(Icons.facebook)),
+                const SizedBox(
+                  width: 20.0,
+                ),
+                IconButton(
+                    onPressed: () {
+                      launch("sms: +2${widget.sms}");
+                    },
+                    icon: const Icon(Icons.message)),
+                const SizedBox(
+                  width: 20.0,
+                ),
+                IconButton(
+                    onPressed: () {
+                      launch("https://wa.me/+2${widget.whatsapp}/");
+                    },
+                    icon: const Icon(Icons.telegram_rounded)),
+                const SizedBox(
+                  width: 20.0,
+                ),
+                IconButton(
+                    onPressed: () {
+                      FlutterPhoneDirectCaller.callNumber("+2${widget.call}");
+                    },
+                    icon: const Icon(Icons.call)),
+                const SizedBox(
+                  width: 20.0,
+                ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MapScreen(
+                              double.parse(widget.lat.toString()),
+                              double.parse(widget.long.toString())),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.my_location)),
               ],
             ),
           ),

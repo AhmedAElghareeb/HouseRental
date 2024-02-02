@@ -1,13 +1,23 @@
 import 'package:final_project/admin/item_info.dart';
 import 'package:flutter/material.dart';
 
-class OneItemInfo extends StatefulWidget
-{
+class OneItemInfo extends StatefulWidget {
   String des, pri, loc, facebook, sms, whatsapp, call;
-  double lat,long;
-  dynamic img1, img2, img3;
+  String lat, long;
+  String imageUrl = "";
 
-  OneItemInfo(this.des, this.pri, this.loc, this.img1, this.img2, this.img3,  this.facebook, this.sms, this.whatsapp, this.call,this.lat,this.long);
+  OneItemInfo(
+    this.imageUrl,
+    this.des,
+    this.pri,
+    this.loc,
+    this.facebook,
+    this.sms,
+    this.whatsapp,
+    this.call,
+    this.lat,
+    this.long,
+  );
 
   @override
   State<OneItemInfo> createState() => _OneItemInfoState();
@@ -18,25 +28,24 @@ class _OneItemInfoState extends State<OneItemInfo> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GestureDetector(
-      onTap: ()
-      {
+      onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(
+          context,
+          MaterialPageRoute(
             builder: (context) => ItemInfo(
               widget.des,
               widget.pri,
               widget.loc,
-              widget.img1,
-              widget.img2,
-              widget.img3,
               widget.facebook,
               widget.sms,
               widget.whatsapp,
               widget.call,
               widget.lat,
-              widget.long
+              widget.long,
+              widget.imageUrl,
             ),
-        ),);
+          ),
+        );
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -44,8 +53,16 @@ class _OneItemInfoState extends State<OneItemInfo> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(widget.img1, width: 150, height: 150,),
-              SizedBox(width: 10.0,),
+              SizedBox(
+                width: 150,
+                height: 150,
+                child: Image.network(
+                  widget.imageUrl.toString(),
+                ),
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
               Column(
                 children: [
                   FittedBox(
@@ -55,11 +72,12 @@ class _OneItemInfoState extends State<OneItemInfo> {
                       style: TextStyle(
                         fontSize: 12.0,
                         fontWeight: FontWeight.bold,
-
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
                   FittedBox(
                     fit: BoxFit.contain,
                     child: Text(
@@ -74,7 +92,9 @@ class _OneItemInfoState extends State<OneItemInfo> {
               ),
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

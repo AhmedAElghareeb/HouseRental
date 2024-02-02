@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project/admin/admin_home.dart';
 import 'package:final_project/widgets/hexacolor.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 
 class AddNew extends StatefulWidget {
@@ -15,19 +19,128 @@ class _AddNewState extends State<AddNew> {
   TextEditingController des = TextEditingController();
   TextEditingController pri = TextEditingController();
   TextEditingController loc = TextEditingController();
-  TextEditingController pic1 = TextEditingController();
-  TextEditingController pic2 = TextEditingController();
-  TextEditingController pic3 = TextEditingController();
   TextEditingController facebook = TextEditingController();
   TextEditingController sms = TextEditingController();
   TextEditingController whatsapp = TextEditingController();
   TextEditingController call = TextEditingController();
   TextEditingController lat = TextEditingController();
   TextEditingController long = TextEditingController();
+  TextEditingController imageName = TextEditingController();
+  String imageUrl = "";
+  File? img;
+  String? image;
+  dynamic picker = ImagePicker();
+
+  Future<void> uploadImage() async {
+    // Reference referenceRoot = FirebaseStorage.instance.ref();
+    // Reference referenceDirectionImages = referenceRoot.child(
+    //   "images",
+    // );
+    // Reference referenceImageToUpload = referenceDirectionImages.child(
+    //   imageName.text.toString(),
+    // );
+    //
+    // await referenceImageToUpload.putFile(
+    //   File(
+    //     img!.path,
+    //   ),
+    // );
+    //
+    // imageUrl = await referenceImageToUpload.getDownloadURL();
+
+    final storageRef = FirebaseStorage.instance.ref();
+    final mountainsRef = storageRef.child("image_${des.text}.jpg");
+    final mountainImagesRef = storageRef.child("images/image_${des.text}.jpg");
+    assert(mountainsRef.name == mountainImagesRef.name);
+    assert(mountainsRef.fullPath != mountainImagesRef.fullPath);
+    File file = File(img!.path);
+    await mountainsRef.putFile(file);
+    imageUrl = await mountainsRef.getDownloadURL();
+
+  }
+
+  Future<void> pickImage() async {
+    XFile? xFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (xFile != null) {
+      setState(() {
+        img = File(xFile.path);
+      });
+    }
+  }
+
+  Future<void> pickCamera() async {
+    XFile? xFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (xFile != null) {
+      setState(() {
+        img = File(xFile.path);
+      });
+    }
+  }
+
+  Widget bottomSheet(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: size.height * 0.2,
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      child: Column(
+        children: [
+          const Text('أختر الصورة الشخصية'),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  pickImage();
+                  Navigator.pop(context);
+                },
+                child: const Column(
+                  children: [
+                    Icon(
+                      Icons.image,
+                      size: 80,
+                      color: Colors.blue,
+                    ),
+                    Text(
+                      'المعرض',
+                      style: TextStyle(color: Colors.blue, fontSize: 20),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                width: 50,
+              ),
+              InkWell(
+                onTap: () {
+                  pickCamera();
+                  Navigator.pop(context);
+                },
+                child: const Column(
+                  children: [
+                    Icon(
+                      Icons.camera,
+                      size: 80,
+                    ),
+                    Text(
+                      'الكاميرا',
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -47,22 +160,6 @@ class _AddNewState extends State<AddNew> {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "To Add New Photo (assets/data/name of photo.extention)",
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
@@ -129,70 +226,17 @@ class _AddNewState extends State<AddNew> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: TextField(
-              controller: pic1,
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                hintText: "Picture 1",
-                filled: true,
-                fillColor: Colors.white,
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.grey)),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              controller: pic2,
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                hintText: "Picture 2",
-                filled: true,
-                fillColor: Colors.white,
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.grey)),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: TextField(
-              controller: pic3,
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                hintText: "Picture 3",
-                filled: true,
-                fillColor: Colors.white,
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.grey)),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
+          FilledButton(
+            onPressed: () {
+              setState(() {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => bottomSheet(context),
+                );
+              });
+            },
+            child: Text(
+              "Choose",
             ),
           ),
           Padding(
@@ -307,13 +351,11 @@ class _AddNewState extends State<AddNew> {
                       String description = des.text;
                       String price = pri.text;
                       String location = loc.text;
-                      String photo1 = pic1.text;
-                      String photo2 = pic2.text;
-                      String photo3 = pic3.text;
                       String face = facebook.text;
                       String sm = sms.text;
                       String whats = whatsapp.text;
                       String cal = call.text;
+                      await uploadImage();
 
                       FirebaseFirestore.instance
                           .collection("Items")
@@ -321,15 +363,13 @@ class _AddNewState extends State<AddNew> {
                         "description": description,
                         "price": price,
                         "location": location,
-                        "photo1": photo1,
-                        "photo2": photo2,
-                        "photo3": photo3,
                         "facebook": face,
                         "sms": sm,
                         "whatsapp": whats,
                         "call": cal,
                         "lat": _latt,
                         "long": _longg,
+                        "imageUrl": imageUrl
                       });
 
                       Navigator.pushAndRemoveUntil(

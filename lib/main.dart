@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         splash: Center(
           child: Image.asset("assets/app_logo/logoo.jpeg"),
         ),
-        nextScreen: (data.getString("email") == null) ? LoginScreen() : Home(),
+        nextScreen: (data.getString("email") == null) ? LoginScreen() : const Home(),
         splashTransition: SplashTransition.scaleTransition,
         pageTransitionType: PageTransitionType.fade,
         splashIconSize: 250,
